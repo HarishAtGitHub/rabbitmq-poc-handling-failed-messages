@@ -1,5 +1,5 @@
 # rabbitmq-poc-handling-failed-messages
-POC to see how to handle if the message processing by one of the consumes fails
+POC to see how to handle if the message processing by one of the consumer fails.
 
 Rabbitmq is a message broker software implementing the AMQP protocol.
 
