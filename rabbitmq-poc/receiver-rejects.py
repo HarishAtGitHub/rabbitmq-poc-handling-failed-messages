@@ -5,7 +5,7 @@ import init_rabbitmq
 connection = pika.BlockingConnection(pika.ConnectionParameters(
         host='localhost'))
 channel = connection.channel()
-queue_name='mobilesite-integration-q-rejects'
+queue_name='poc-q-rejects'
 def callback(ch, method, properties, body):
     print(" [x] Received %r" % body)
     success = False

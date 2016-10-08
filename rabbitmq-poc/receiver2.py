@@ -4,7 +4,7 @@ import init_rabbitmq
 connection = pika.BlockingConnection(pika.ConnectionParameters(
         host='localhost'))
 channel = connection.channel()
-queue_name = 'mobilesite-integration-q'
+queue_name = 'poc-q'
 
 def callback(ch, method, properties, body):
     print(" [x] Received %r" % body)

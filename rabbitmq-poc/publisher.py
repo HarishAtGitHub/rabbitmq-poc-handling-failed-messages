@@ -7,8 +7,8 @@ message = sys.argv[1]
 try:
     connection = pika.BlockingConnection()
     channel = connection.channel()
-    channel.basic_publish(exchange='mobilesite-integration-exchange',
-                          routing_key='mobilesite-integration',
+    channel.basic_publish(exchange='poc-exchange',
+                          routing_key='poc',
                           body=message,
                           properties=pika.BasicProperties(
                               delivery_mode=2,  # TODO: make message persistent :tells RabbitMQ to save the message to disk(

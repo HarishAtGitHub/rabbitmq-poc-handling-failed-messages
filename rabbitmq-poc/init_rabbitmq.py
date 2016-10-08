@@ -18,27 +18,27 @@ try:
 
     # create exchange - exchange is where message reaches
     # exchange server delivers it to the appropriate que based on routing key
-    channel.exchange_declare(exchange='mobilesite-integration-exchange',
+    channel.exchange_declare(exchange='poc-exchange',
                              durable=True)
-    channel.queue_declare(queue='mobilesite-integration-q',
+    channel.queue_declare(queue='poc-q',
                           durable=True,
                           arguments={
-                              'x-dead-letter-exchange' : 'mobilesite-integration-exchange-rejects',
-                              'x-dead-letter-routing-key' : 'mobilesite-integration-rejects'
+                              'x-dead-letter-exchange' : 'poc-exchange-rejects',
+                              'x-dead-letter-routing-key' : 'poc-rejects'
                           }
                           )
-    channel.queue_bind(queue='mobilesite-integration-q',
-                       exchange='mobilesite-integration-exchange',
-                       routing_key='mobilesite-integration')
+    channel.queue_bind(queue='poc-q',
+                       exchange='poc-exchange',
+                       routing_key='poc')
 
     # create rejected message queue
-    channel.exchange_declare(exchange='mobilesite-integration-exchange-rejects',
+    channel.exchange_declare(exchange='poc-exchange-rejects',
                              durable=True)
-    channel.queue_declare(queue='mobilesite-integration-q-rejects',
+    channel.queue_declare(queue='poc-q-rejects',
                           durable=True)
-    channel.queue_bind(queue='mobilesite-integration-q-rejects',
-                       exchange='mobilesite-integration-exchange-rejects',
-                       routing_key='mobilesite-integration-rejects')
+    channel.queue_bind(queue='poc-q-rejects',
+                       exchange='poc-exchange-rejects',
+                       routing_key='poc-rejects')
     connection.close()
     print('Success ! doing initial setup of rabbitmq')
 except Exception as e:
