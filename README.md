@@ -28,3 +28,12 @@ python receiver-rejects.py
 python publisher.py <inputmessage>
 ```
 
+You will observer that I reject all the messages that I get in receiver1. So what happens is it goes to the dead letter queue
+and as 'receiver-rejects' has subscribed to this queue, it gets the rejected messages and it starts processing.
+
+There are two solutions:
+
+1) either the receive-rejects job gets the failed messages and tries to process it again. If it fails again either it 
+can requeue or it can send an email to someone saying that the following message was failed.
+
+In this poc just for the sake of simplicity I am making the message processing pass at the receiver-rejects end.
